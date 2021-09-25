@@ -1,7 +1,7 @@
 # roda applicaiton
 require_relative "env"
 
-class NullQuestion; def body; end; end
+class NullQuestion; def question; end; def answer; end; end
 
 class Question
   attr_reader :question, :answer

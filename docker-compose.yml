@@ -2,8 +2,11 @@ version: "3"
 
 services:
   app:
-    image: makevoid/ai-overflow:latest
+    image: makevoid/aioverflow:latest
     build:
       context: .
     ports:
       - 3000:3000
+    environment:
+      RACK_ENV: production
+      DOCKER: '1'
