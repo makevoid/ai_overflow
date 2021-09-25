@@ -5,3 +5,5 @@ services:
     image: makevoid/ai-overflow:latest
     build:
       context: .
+    ports:
+      - 3000:3000
