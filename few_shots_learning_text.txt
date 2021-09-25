@@ -1,0 +1,109 @@
+# language: ruby
+
+# Q: which different types of parameters can I pass to a ruby function?
+# A: normal variables (e.g. `foo(bar)`), keyword arguments (e.g. `foo(bar:)`), splats (e.g. `foo(*bar)` and `foo(**bar)`) and a mix of them (e.g. `foo(bar, baz:, **opts)`)
+
+# Q: which kind of function is this `foo(bar:)`?
+# A: this function is a function named foo, the function accepts a parameter bar:, which has the format of a keyword argument
+
+# Q: how can I sum up two values?
+# A: in ruby you can just do `number = 1+1` and it you will have the value 2 in the variable `number`, the value of the addition operation (method :+) is 
+
+# Q: how do i define a method?
+# A: to define a method you need to write the `def` block, which looks like this: `def function_name; # ...; end` - this will create a function named `function_name` and you will be able to fill in some code into `# ...`
+
+# Q: how do I use arrays in ruby?
+# A: you just have to define one with `arr = []`, you can add values to it via the `<<` operator as such: `arr << 1` and `arr << 2` and `arr << 3` etc., you can access the values of the array with `arr[0] #=> 1`, `arr[1] #=> 2`, `arr[2] #=> 3` etc. ​
+
+# Q: is ruby object oriented or functional
+# A: Ruby has both an object oriented style/syntax (the most common one) and a functional one (using lambdas, `->` and `FunctionName.()`)
+
+# Q: how do you define classes in ruby?
+# A: you can define them by using the class block: `class MyClass; # ...; end`
+
+# Q: what is the module inclusion ordering in ruby?
+# A: The latest module you include overrides the previous one and so on - also, it may be helpful for you to know that if you define `def foo()` inside a module `A` and you include `A` in a second module `B` you will have `foo()` available in the class that will include the module `B`
+
+# Q: what is the difference between a class and a module?
+# A: a class is a type of object, a module is a collection of methods and constants
+
+# Q: what is the difference between an hash and an array, how can I access an array named `arr` and how can I access an hash named `hash`?
+# A: an array is a collection of values, an hash is a collection of key-value pairs, you can access the values of an array via `arr[0]`, `arr[1]`, `arr[2]` etc., you can access the values of an hash via `hash[:key]`
+
+# Q: what is the difference between `arr[0]` and `arr.fetch(0)`?
+# A: the difference between `arr[0]` and `arr.fetch(0)` is that with `arr[0]` you are calling the method `.[]` on `arr` and it returns the value `0`, with `arr.fetch(0)` you are calling the method `.fetch` on `arr` and it raises an error if the index is out of bounds
+
+# Q: what is the difference between `hash[:key]` and `hash.fetch(:key)`?
+# A: the difference between `hash[:key]` and `hash.fetch(:key)` is that with `hash[:key]` you are calling the method `.[]` on `hash` and it returns the value under the key `:key`, with `hash.fetch(:key)` you are calling the method `.fetch` on `hash` and it raises an error if the key is not present
+
+# Q: how can you define a module in ruby?
+# A: you can define a module by using the module block: `module MyModule; # ...; end`
+
+# Q: what is the difference between `include` and `extend`?
+# A: `include` will include the methods of the module into the class that includes it, `extend` will extend the class with the methods of the module, they will be class methods of the class
+
+# Q: what does `define_method` do in ruby?
+# A: `define_method` will define a method on the class that includes it, it will be a class method of the class
+
+# Q: what is the difference between `define_method` and `def`?
+# A: `define_method` will define a method at runtime, `def` will define a method at compile (interpretation) time
+
+# Q: how to sum up `arr = [1, 2, 3]` to get the value `6`?
+# A: you can do `arr.inject(0) { |sum, x| sum + x }`
+
+# Q: how to calculate the surface of the earth in ruby in km starting from the circumference?
+# A: you can do `(4 * Math::PI * 6378.137) / 1000`
+
+# Q: how to use excon to make a get request to fetch the current weather in London, UK?
+# A: you can do `Excon.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1')`
+
+# Q: which syntax people use in ruby in terms of tabs / spaces, soft and hard tabs, traling or not traling colon
+# A: people use soft tabs, which means that they use spaces instead of tabs, they also use a soft tab size of 2 spaces, they also do use a trailing colon
+
+# Q: what is `Klass.new` and what is `initialize()` (`class Klass; def initialize; # ...; end`) ?
+# A: `Klass.new` is a class method that will create a new instance of the class, `Klass`'s `initialize()` is that instance method, it will be called when the instance is created, you can define the `initialize()` method by using the `def` block inside the class
+
+# Q: what's the use of the `def` block in ruby (`def; # ... ; end;`
+# A: the `def` block is used to define a method, it will be an instance method of the object created by the class where the method is defined into
+
+# Q: how I can compare two string in ruby?
+# A: you can do `str1 == str2`, this will return `true` or `falese` depending if the comparison succeeded or failed (the strings are equal or not)
+
+# Q: how do you start a timer in ruby and measure elapsed time?
+# A: you can do `start_time = Time.now` and then `elapsed_time = Time.now - start_time`, you will get a value expressed in seconds
+
+# Q: how do you check if an item `1` is present in an array `arr`?
+# A: you can do `arr.include?(1)`, this will return `true` or `false` depending if the item is present or not
+
+# Q: how do you get an element `1` out of an hash `hash = { name: "Mario", bikes: `1` }
+# A: you can do `hash[:bikes]`, this will return the value of the key `:bikes`
+
+# Q: how do you write a get request in ruby?
+# A: in ruby you can use `Excon.get url` to perform an HTTP GET request - example: `Excon.get "https://api.github.com/users/octocat"`
+
+# Q: how do you write a post request in ruby?
+# A: in ruby you can use `Excon.post url, body: {}` to perform an HTTP POST request - example: `Excon.post "https://example.org", { foo: "bar" }.to_json` where we send the hash `{ foo: "bar" }` as json body
+
+# Q: how do you transform a json string to a hash?
+# A: you can do `hash = JSON.parse json_string`
+
+# Q: how do you get the last value of an array?
+# A: you can do `arr.last`
+
+# Q: how do you get the first value of an array?
+# A: you can do `arr.first`
+
+# Q: how do you get the second value of an array?
+# A: you can do `arr[1]`
+
+# Q: how do you get the third value of an array?
+# A: you can do `arr[2]`
+
+# Q: where's the error in `def foo; 2+"bar"; end`?
+# A: the error is in the `2+"bar"` part, you can't add a number and a string, you can try this sample code instead: `"#{2}bar"` and you will get the string `2bar`
+
+# Q: what is the difference between `foo.bar` and `foo.method(:bar)`?
+# A: `foo.bar` will return the value of the method `bar` of the object `foo`, `foo.method(:bar)` will return the method object of the method `bar` of the object `foo`
+
+# Q: what is the difference between `foo.bar` and `foo.method(:bar)`?
+# A: `foo.bar` will return the value of

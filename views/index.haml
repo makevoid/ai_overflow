@@ -1,0 +1,50 @@
+%html
+  %title AIOverflow
+  %style{ type: "text/css", src: "/css/vendor/bulma.css" }
+  %style{ type: "text/css", src: "/css/style.css" }
+  %body
+    / bulma hero
+    %div.hero.is-primary
+      %div.hero-body
+        %h1.title AIOverflow
+        %h2.subtitle
+          %a{ href: "/questions" } Questions
+          %a{ href: "/users" } Users
+      %div.hero-foot
+        %a.button{ href: "/" } Ask a Question
+        %a.button{ href: "/login" } Login
+        %a.button{ href: "/register" } Register
+
+    / get new random question section with button and textarea
+    %div.section
+      %div.columns
+        %div.column
+          %h1 New Question
+          %form{ action: "/questions", method: "post" }
+            %input{ type: "submit", value: "Submit" }
+
+
+    / ask question form with textarea and button
+    %div.section
+      %div.columns
+        %div.column
+          %h1 Ask a Question
+          %form{ action: "/questions", method: "post" }
+            %input{ type: "text", name: "question[title]" }
+            %textarea{ name: "question[body]", rows: "10" }
+            %input{ type: "submit", value: "Submit" }
+    
+    / get all questions
+    %div.section
+      %div.columns
+        %div.column
+          %h1 Questions
+          %ul
+            - @questions && @questions.each do |question|
+              / render a card
+                            %li
+                %div.card
+                  %div.card-content
+                    %h3
+                      %a{ href: "/questions/#{question.id}" } #{question.title}
+                    %p#{question.body}
