@@ -14,13 +14,14 @@
       .card
         .card-content
           %h1 Ask a Question
+          %p e.g. ( "how to split a string in ruby?" or "how to parse time in ruby?" etc. )
           %form{ action: "/questions", method: "post" }
             %textarea.textarea.question{ name: "question", rows: "3" }
             .s10
             %input.button.is-primary.is-large{ type: "submit", value: "Submit" }
 
 / response - question
-- if question
+- if question.question
   .section
     .columns
       .column
