@@ -30,11 +30,11 @@ class App < Roda
     r.on "questions" do
       r.post do
         question = r.params["question"]
-        puts "QUESTION"
-        puts question
         question.strip!
         # TODO: refactor
         question = "#{question} ?" unless question[-1] == "?"
+        puts "QUESTION"
+        puts question
         bot = GPT3AnswerBot.new question: question
         answer = bot.answer
         question = Question.new question: question, answer: answer

@@ -1,21 +1,22 @@
 %html
-  %title AIOverflow
+  %title AIOverflow.rb - GPT3-based stackoveflow Q/A platform
   %link{ rel: "stylesheet", href: "/css/vendor/bulma.css" }
   %link{ rel: "stylesheet", href: "/css/style.css" }
   / mobile meta tags
   %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
+  %meta{:content => "/images/og_aioverflow.png", :property => "og:image"}/
   %body
     / bulma hero
     .hero.is-primary
       .hero-body
         %h1.title AIOverflow
         %h2.subtitle
-          GPT3-based Stackoverflow
+          GPT3-based Stackoverflow Q/A
       .hero-foot
         %a.button{ href: "/" } Ask a Question
-        %a.button{ href: "/#soon" } Train the AI 
+        %a.button{ href: "/#soon" } Train the AI
         -# %a.button{ href: "/login" } Login
         -# %a.button{ href: "/register" } Register
 
-    .content 
+    .content
       = yield
