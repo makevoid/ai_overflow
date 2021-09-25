@@ -9,4 +9,14 @@ task :run_gpt3_sample do
   sh "bundle exec ruby ./lib/gpt3_answer_bot.rb"
 end
 
+desc "Publish - publish docker containers"
+task :publish do
+  sh "docker-compose build && docker-compose push"
+end
+
+# TODO: remove
+task :refresh do
+  sh "cd ~/apps/makevoid-docker && rake"
+end
+
 task default: :run
