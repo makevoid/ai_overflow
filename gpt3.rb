@@ -14,6 +14,8 @@ class GPT3AnswerBot
   end
 
   def answer
+    puts "QUESTION"
+    puts message
     msg = "
     #{FEW_SHOTS_TEXT}
 

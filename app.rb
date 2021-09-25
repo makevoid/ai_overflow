@@ -37,7 +37,7 @@ class App < Roda
       end
 
       r.get do
-        "not implemented"
+        r.redirect "/"
       end
     end
 

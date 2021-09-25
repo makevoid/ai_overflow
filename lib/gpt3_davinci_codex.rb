@@ -4,7 +4,7 @@ class GPT3DavinciCodex
 
   ENGINE = "davinci-codex" # code generation / stackoveflow-like answers / code completion
 
-  MAX_TOKENS = 70
+  MAX_TOKENS = 60
   STOP_TOKENS = [ # TODO: extract as options
     "\n# Q:",
     "\n#",
@@ -17,9 +17,9 @@ class GPT3DavinciCodex
 
   def complete
     bot_api = OpenAI::Client.new access_token: OPENAI_TOKEN
-    puts "Input Text"
-    p input
-    puts "---------"
+    # puts "Input Text"
+    # p input
+    # puts "---------"
     response = bot_api.completions(
       engine: ENGINE,
       parameters: {
@@ -36,5 +36,5 @@ class GPT3DavinciCodex
     puts "RESP:"
     p resp
     resp
-  end 
+  end
 end
