@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  app:
+    image: makevoid/ai-overflow:latest
+    build:
+      context: .
