@@ -34,7 +34,8 @@ class App < Roda
         # TODO: refactor
         question = "#{question} ?" unless question[-1] == "?"
         puts "QUESTION"
-        puts question
+        p question
+        question = question[0..100]
         bot = GPT3AnswerBot.new question: question
         answer = bot.answer
         question = Question.new question: question, answer: answer

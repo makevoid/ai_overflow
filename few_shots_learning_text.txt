@@ -7,7 +7,7 @@
 # A: this function is a function named foo, the function accepts a parameter bar:, which has the format of a keyword argument
 
 # Q: how can I sum up two values?
-# A: in ruby you can just do `number = 1+1` and it you will have the value 2 in the variable `number`, the value of the addition operation (method :+) is 
+# A: in ruby you can just do `number = 1+1` and it you will have the value 2 in the variable `number`, the value of the addition operation (method :+) is
 
 # Q: how do i define a method?
 # A: to define a method you need to write the `def` block, which looks like this: `def function_name; # ...; end` - this will create a function named `function_name` and you will be able to fill in some code into `# ...`
@@ -105,5 +105,5 @@
 # Q: what is the difference between `foo.bar` and `foo.method(:bar)`?
 # A: `foo.bar` will return the value of the method `bar` of the object `foo`, `foo.method(:bar)` will return the method object of the method `bar` of the object `foo`
 
-# Q: what is the difference between `foo.bar` and `foo.method(:bar)`?
-# A: `foo.bar` will return the value of
+# Q: how to have better precision types than float in ruby ?
+# A: you can do that by using an instance of the BigDecimal class, instead of the `Kernel::Float` class - example: `b = BigDecimal.new(`123.456`)`
