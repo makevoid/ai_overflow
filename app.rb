@@ -3,6 +3,15 @@ require_relative "env"
 
 class NullQuestion; def body; end; end
 
+class Question
+  attr_reader :question, :answer
+
+  def initialize(question:, answer:)
+    @question = question
+    @answer = answer
+  end
+end
+
 class App < Roda
   plugin :render, engine: "haml"
   plugin :assets, css: "style.css", js: "app.js"
@@ -11,27 +20,30 @@ class App < Roda
   plugin :json
   plugin :error_handler
   plugin :common_logger
-  
+
   route do |r|
     r.root do
       question = NullQuestion.new
       view "index", locals: { question: question }
     end
 
-    r.on "question" do
+    r.on "questions" do
       r.post do
-        question = DavinciCodex.new r.params
-        view "question", locals: { question: question }
+        question = r.params["question"]
+        bot = GPT3AnswerBot.new question: question
+        answer = bot.answer
+        question = Question.new question: question, answer: answer
+        view "index", locals: { question: question }
       end
 
-      r.get do 
+      r.get do
         "not implemented"
       end
     end
 
     # TODO: add redis
 
-    r.on "few-shots-add" do 
+    r.on "few-shots-add" do
       r.post do
         question = r.params["question"]
         answer = r.params["answer"]
@@ -40,7 +52,7 @@ class App < Roda
       end
     end
 
-    r.on "text" do 
+    r.on "text" do
       r.get "few-shots" do
         File.read "./public/text/few-shots.txt"
       end
@@ -48,9 +60,8 @@ class App < Roda
       r.get "training-data" do
         File.read "./public/text/training-data.txt"
       end
-    end 
-      
+    end
+
     r.public
   end
-
 end

@@ -5,3 +5,15 @@
 .s50 { height: 50px; }
 .s70 { height: 70px; }
 .s100 { height: 100px; }
+
+textarea.textarea.question {
+  font-size: 1.7em;
+}
+
+.card-content p.answer {
+  font-size: 2em;
+}
+
+/* .card-content.answer p {
+  font-size: 1.5em;
+} */

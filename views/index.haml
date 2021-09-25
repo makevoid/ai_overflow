@@ -15,9 +15,9 @@
         .card-content
           %h1 Ask a Question
           %form{ action: "/questions", method: "post" }
-            %textarea.textarea{ name: "question[body]", rows: "3" }
+            %textarea.textarea.question{ name: "question", rows: "3" }
             .s10
-            %input.button{ type: "submit", value: "Submit" }
+            %input.button.is-primary.is-large{ type: "submit", value: "Submit" }
 
 / response - question
 - if question
@@ -26,7 +26,9 @@
       .column
         .card
           .card-content
-            %p #{question.body}
+            %h1 Answer
+            %p to question: #{question.question}
+            %p.answer #{question.answer}
 
 
 / get all questions
@@ -43,4 +45,3 @@
 -#                 %h3
 -#                   %a{ href: "/questions/#{question.id}" } #{question.title}
 -#                 %p #{question.body}
-
