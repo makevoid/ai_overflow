@@ -1,8 +1,8 @@
-require_relative "env"
+require_relative "../env"
 
 class GPT3AnswerBot
   # ENGINE = "davinci" # text generation / compleition / conversation
-  ENGINE = "davinci-codex" # text generation / compleition / conversation
+  ENGINE = "davinci-codex" # code generation / stackoveflow-like answers / code completion
 
   attr_reader :question
 
@@ -17,12 +17,11 @@ class GPT3AnswerBot
     msg = "
     #{FEW_SHOTS_TEXT}
 
-    # Q: #{message}
+    # Q: #{question}
     # A:"
     msg = format_msg msg: msg
     answer = openai_complete_code text: msg
-    msg = "A: #{answer}"
-    msg
+    answer
   end
 
   private
