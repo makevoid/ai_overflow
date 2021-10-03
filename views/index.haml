@@ -16,7 +16,7 @@
           %h1 Ask a Question
           %p e.g. ( "how to split a string in ruby?" or "how to parse time in ruby?" etc. )
           %form{ action: "/questions", method: "post" }
-            %textarea.textarea.question{ name: "question", rows: "3" }
+            %textarea.textarea.question{ name: "question" }
             .s10
             %input.button.is-primary.is-large{ type: "submit", value: "Submit" }
 
@@ -24,12 +24,16 @@
 - if question.question
   .section
     .columns
+      .column.is-one-fifth
       .column
         .card
           .card-content
             %h1 Answer
             %p to question: #{question.question}
             %p.answer #{question.answer}
+            .s30
+            %p Model Output: #{question.answer_orig}
+      .column.is-one-fifth
 
 
 / get all questions

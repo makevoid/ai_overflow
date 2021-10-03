@@ -107,3 +107,12 @@
 
 # Q: how to have better precision types than float in ruby ?
 # A: you can do that by using an instance of the BigDecimal class, instead of the `Kernel::Float` class - example: `b = BigDecimal.new(`123.456`)`
+
+# Q: What's Javascript's `class Foo { constructor(bar) { this.bar = bar } }` in ruby?
+# A: In ruby you can write `class Foo; def initialize(bar); @bar = bar; end; end`
+
+# Q: What's `class Bar { constructor(asd) { this.asd = new Date() } }` in ruby?
+# A: In ruby you can create a simple example in a file called `hello_world.rb` with the following content: `class Bar; def initialize(baz); @baz = Time.now; end; end; end`
+
+# Q: Python's `class Foo:; def __init__(self, bar):; self.bar = bar` can be implemented in ruby?
+# A: Yes, you can define it as `class Foo; def initialize(bar); @bar = bar; end; end`

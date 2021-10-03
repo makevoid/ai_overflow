@@ -1,25 +1,48 @@
 # roda applicaiton
 require_relative "env"
 
+# model
+
 class NullQuestion; def question; end; def answer; end; end
 
 class Question
-  attr_reader :question, :answer
+  attr_reader :question, :answer, :answer_orig
 
   def initialize(question:, answer:)
     @question = question
-    @answer = answer
+    @answer_orig = answer
+    @answer = trim_answer answer: answer
+  end
+
+  def trim_answer(answer:)
+    # trim string the sring answer, remove every char after the last " , "
+    answer.gsub /(\s,\s)*$/, ""
+    # TODO: find a better method
+    # answer.gsub /[^\p{Punct}]*$/, ""
   end
 end
 
+# utils
+
+ExtractQuestion = -> (question:) {
+  question.strip!
+  # TODO: refactor
+  question = "#{question} ?" unless question[-1] == "?"
+  puts "QUESTION"
+  p question
+  # limit question to 100 chars
+  question[0..99]
+}
+# controller (app)
+
 class App < Roda
   plugin :render, engine: "haml"
-  plugin :assets, css: "style.css", js: "app.js"
   plugin :public
   plugin :all_verbs
   plugin :json
   plugin :error_handler
   plugin :common_logger
+  # plugin :assets, css: "style.css", js: "app.js"
 
   route do |r|
     r.root do
@@ -30,12 +53,7 @@ class App < Roda
     r.on "questions" do
       r.post do
         question = r.params["question"]
-        question.strip!
-        # TODO: refactor
-        question = "#{question} ?" unless question[-1] == "?"
-        puts "QUESTION"
-        p question
-        question = question[0..100]
+        question = ExtractQuestion.(question: question)
         bot = GPT3AnswerBot.new question: question
         answer = bot.answer
         question = Question.new question: question, answer: answer

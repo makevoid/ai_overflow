@@ -17,3 +17,9 @@ textarea.textarea.question {
 /* .card-content.answer p {
   font-size: 1.5em;
 } */
+
+textarea.textarea.question {
+  /* medium height textarea */
+  height: 100px;
+  min-height: 100px;
+}
